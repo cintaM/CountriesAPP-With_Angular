@@ -1,0 +1,19 @@
+<h2>Por Capital</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+<app-country-input (onEnter)="buscar( $event )" (onDebounce)="sugest($event)" placeholder="Buscar por capital..."></app-country-input>
+  </div>
+</div>
+<hr />
+<ng-container *ngIf="errorExist; else elseTemplate">
+  <div class="alert alert-danger">
+    No se encontró nada con el término {{ termino }}
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div>
+    <app-country-table [countries]="capital"></app-country-table>
+  </div>
+</ng-template>
